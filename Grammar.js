@@ -1,4 +1,4 @@
-export class Grammar {
+class Grammar {
   constructor(productions) {
     this.productions = productions;
   }

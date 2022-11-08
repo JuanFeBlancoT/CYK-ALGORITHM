@@ -1,4 +1,4 @@
-export class Destiantion {
+class Destiantion {
   constructor(left,right,term) {
     this.left = left;
     this.right = right;

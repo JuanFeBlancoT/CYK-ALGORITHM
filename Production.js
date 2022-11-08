@@ -1,4 +1,4 @@
-export class Production {
+class Production {
   constructor(name,destinations) {
     this.name = name;
     this.destinations=destinations;

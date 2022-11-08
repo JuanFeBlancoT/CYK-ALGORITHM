@@ -1,5 +1,7 @@
+
 let productionsInGrammar;
 let dataRows = [];
+var grammar;
 
 //Create input fields depending on the amount of productions in grammar
 function hello(){
@@ -45,7 +47,9 @@ function hi(){
     rawData.push(document.getElementById("productions-section").childNodes[1].childNodes[i].value);
   }
 
+  var productions = [];
   for (let i = 0; i < productionsInGrammar; i++) {
+
     //split input into the production name and the rest
     var stringRow = "";
     stringRow = rawData[i];
@@ -57,15 +61,27 @@ function hi(){
     remaining = x[0];
     var cases = remaining.split(";");
 
+    //destination array (either variables or terminal)
+    let destinations = [];
+
     for (let j = 0; j < cases.length; j++) {
+      var destinationX;
       if(cases[j].length > 1){
         //variable
-        console.log("Im variable: "+cases[j]);
+        var caseX = "";
+        caseX = cases[j];
+        const [first, second] = [caseX.slice(0, 1), caseX.slice(1)];
+        destinationX = new Destiantion(first,second,null);
       }else{
         //terminal
-        console.log("Im terminal: "+cases[j]);
+        destinationX = new Destiantion(null,null,cases[j]);
       }
-      
+      destinations.push(destinationX);
     }
+    var productionX = new Production(name,destinations);
+    productions.push(productionX);
   }
+
+  grammar = new Grammar(productions);
+  console.log(grammar);
 }
