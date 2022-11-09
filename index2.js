@@ -87,6 +87,7 @@ function hi(){
   }
 
   grammar = new Grammar(productions);
+  cykMatrix = new Array(ogChain.length);
   initializeCYK();
 }
 
@@ -95,38 +96,29 @@ function cyk(){
 }
 
 function initializeCYK(){
-  console.log(grammar.validateProductionInitial("a"));
+
+  //Initialice matrix with correspnding available spaces
+  var n = cykMatrix.length;
+  for (let index = 0; index < cykMatrix.length; index++) {
+    cykMatrix[index] = new Array(n);
+    n--
+  }
+
+  //get productions that produce chain ai with length 1
+  var j = 0;
+  for (let i = 1; i <= cykMatrix.length; i++) {
+    var ai = ogChain.slice(j,i);
+    var generators = grammar.validateProductionInitial(ai);
+
+    //assign that box as an array of variabes and fill it
+    cykMatrix[0][j] = [];
+    for (let index = 0; index < generators.length; index++) {
+      cykMatrix[0][j].push(generators[index]);
+    }
+    j++;
+  } 
+
+  console.log(cykMatrix);
 }
 
-// ------
-/*
-var d1 = new Destiantion("A","B",null);
-var d2 = new Destiantion("B","B",null);
-var d3 = new Destiantion(null,null,"a");
-var dsp1 = [];
-dsp1.push(d1);
-dsp1.push(d2);
-dsp1.push(d3);
-
-var d4 = new Destiantion("A","A",null);
-var d5 = new Destiantion(null,null,"b");
-var dsp2 = [];
-dsp2.push(d4);
-dsp2.push(d5);
-
-var p1 = new Production("A", dsp1);
-var p2 = new Production("B", dsp2);
-
-var psg = [];
-psg.push(p1);
-psg.push(p2);
-
-grammar = new Grammar(psg);
-
-var result;
-console.log(grammar);
-
-var generators = grammar.validateProductionInitial("a");
-console.log(generators);*/
-// ------
 
