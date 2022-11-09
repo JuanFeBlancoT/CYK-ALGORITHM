@@ -11,4 +11,12 @@ class Production {
   getDestinations(){
     return this.destinations;
   }
+
+  validateDestinations(ai){
+    var generates = false;
+    for (let i = 0; i < this.destinations.length && !generates; i++) {
+      generates = this.destinations[i].validateDestination(ai);
+    }
+    return generates;
+  }
 }

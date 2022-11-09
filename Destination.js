@@ -13,7 +13,15 @@ class Destiantion {
     return this.right;
   }
 
-  getLeft(){
-    return this.left;
+  getTerm(){
+    return this.term;
+  }
+
+  validateDestination(ai){
+    if(this.term != null && this.term == ai){
+      return true;
+    }else{
+      return false;
+    }
   }
 }

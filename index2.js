@@ -2,11 +2,15 @@
 let productionsInGrammar;
 let dataRows = [];
 var grammar;
+var ogChain;
+var cykMatrix;
 
 //Create input fields depending on the amount of productions in grammar
 function hello(){
   let numProductions = document.getElementById("productions-num-input");
   productionsInGrammar = numProductions.value;
+  ogChain = document.getElementById("chain-input").value;
+
   //-- Create form with inputs for each production -- //
   const container = document.getElementById("productions-section");
   const formElement = document.createElement("form");
@@ -83,5 +87,46 @@ function hi(){
   }
 
   grammar = new Grammar(productions);
-  console.log(grammar);
+  initializeCYK();
 }
+
+function cyk(){
+
+}
+
+function initializeCYK(){
+  console.log(grammar.validateProductionInitial("a"));
+}
+
+// ------
+/*
+var d1 = new Destiantion("A","B",null);
+var d2 = new Destiantion("B","B",null);
+var d3 = new Destiantion(null,null,"a");
+var dsp1 = [];
+dsp1.push(d1);
+dsp1.push(d2);
+dsp1.push(d3);
+
+var d4 = new Destiantion("A","A",null);
+var d5 = new Destiantion(null,null,"b");
+var dsp2 = [];
+dsp2.push(d4);
+dsp2.push(d5);
+
+var p1 = new Production("A", dsp1);
+var p2 = new Production("B", dsp2);
+
+var psg = [];
+psg.push(p1);
+psg.push(p2);
+
+grammar = new Grammar(psg);
+
+var result;
+console.log(grammar);
+
+var generators = grammar.validateProductionInitial("a");
+console.log(generators);*/
+// ------
+
