@@ -92,6 +92,10 @@ function hi(){
 }
 
 function cyk(){
+  var j = 2;
+  var i = 1;
+  var n = ogChain.length;
+
 
 }
 
@@ -109,15 +113,15 @@ function initializeCYK(){
   for (let i = 1; i <= cykMatrix.length; i++) {
     var ai = ogChain.slice(j,i);
     var generators = grammar.validateProductionInitial(ai);
-
     //assign that box as an array of variabes and fill it
-    cykMatrix[0][j] = [];
+
+    cykMatrix[(i-1)][0] = [];
     for (let index = 0; index < generators.length; index++) {
-      cykMatrix[0][j].push(generators[index]);
+      cykMatrix[(i-1)][0].push(generators[index]);
     }
     j++;
   } 
-
+  
   console.log(cykMatrix);
 }
 
