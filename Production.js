@@ -19,4 +19,12 @@ class Production {
     }
     return generates;
   }
+
+  validateDestinationsRecursive(tagerLeft, targetRight){
+    var generates = false;
+    for (let i = 0; i < this.destinations.length && !generates; i++) {
+      generates = this.destinations[i].validateDestinationRecursive(tagerLeft,targetRight);
+    }
+    return generates;
+  }
 }

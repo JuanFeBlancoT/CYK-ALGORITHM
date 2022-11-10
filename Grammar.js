@@ -30,4 +30,18 @@ class Grammar {
     }
     return generators;
   }
+
+  validateProductions(targetLeft, targetRight){
+    var generators = [];
+    for (let i = 0; i < this.productions.length; i++) {
+      const element = this.productions[i];
+      var generates = element.validateDestinationsRecursive(targetLeft,targetRight);
+      if(generates == true){
+        generators.push(element.name);
+      }      
+    }
+    return generators;
+  }
+
+  //validateDestinationsRecursive
 }

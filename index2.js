@@ -89,13 +89,38 @@ function hi(){
   grammar = new Grammar(productions);
   cykMatrix = new Array(ogChain.length);
   initializeCYK();
+  cyk();
 }
 
 function cyk(){
-  var j = 2;
-  var i = 1;
+  console.log(grammar);
   var n = ogChain.length;
+  for (let j = 2; j <= n; j++) {
+    for (let i = 1; i <= n-j+1; i++) {     
+      var generators = [];
+      for (let k = 1; k <= j-1; k++) {
+        //Find left and right target destinations
+        var leftTarget = cykMatrix[(i-1)][(k-1)];
+        var rightTarget = cykMatrix[((i+k)-1)][((j-k)-1)];
 
+        //For each production verify if it has a production with a destination Left = leftTarget and Right = rightTarget
+        var generatorsKcase = grammar.validateProductions(leftTarget, rightTarget);
+        //if not empty, add those variables to the generators array (this will be done for each combination of K's)
+        for (let y = 0; y < generatorsKcase.length; y++) {
+          generators.push(generatorsKcase[y]);
+        }
+      }
+      //Add generators to matrix box in Xij
+      cykMatrix[(i-1)][(j-1)] = [];
+      for (let g = 0; g < generators.length; g++) {
+        cykMatrix[(i-1)][(j-1)].push(generators[g]);
+      }
+
+      //console.log(i);
+      //console.log(leftTarget+""+rightTarget);
+    }
+  }
+  console.log(cykMatrix);
 
 }
 

@@ -24,4 +24,13 @@ class Destiantion {
       return false;
     }
   }
+
+  //receives strings
+  validateDestinationRecursive(targetLeft, targetRight){
+    if(this.left == targetLeft && this.right == targetRight){
+      return true;
+    }else{
+      return false;
+    }
+  }
 }
