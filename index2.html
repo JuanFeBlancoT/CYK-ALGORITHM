@@ -4,21 +4,28 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="index.css">
   <title>Document</title>
 </head>
 <body>
-  <form>
-    <label for="numProd">Introduce la cadena w: </label>
-    <input type="text" name="chain" id="chain-input">
+  <h1 class="center Margin">CYK</h1>
+  <form id="topp">
+    <label for="numProd" class="center">Introduce la cadena w: </label>
     <br>
-    <label for="numProd">Introduce el número de producciones que contiene la gramática: </label>
-    <input type="text" name="numProd" id="productions-num-input">
-    <input type="button" name="a" id="btn" value="continuar" onclick="setUp()">
+    <input type="text" name="chain" id="chain-input" class="center">
+    <br><br>
+    <label for="numProd" class="center">Introduce el número de producciones que contiene la gramática: </label>
+    <br>
+    <input type="text" name="numProd" id="productions-num-input" class="center">
+    <br><br>
+    <input type="button" name="a" id="btn" value="Continuar" onclick="setUp()" class="center">
+    <br><br>
   </form>
   <div id="productions-section">
   </div>
 
   <div id="result-section"></div>
+  
   
   <script src="Destination.js"></script>
   <script src="Production.js"></script>

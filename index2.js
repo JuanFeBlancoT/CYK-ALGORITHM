@@ -23,7 +23,10 @@ function setUp(){
     const brElement = document.createElement("br");
     
     labelElement.appendChild(document.createTextNode("Producción " + i+" "));
+    labelElement.classList.add("center");
     inputElement.setAttribute("id",i);
+    inputElement.setAttribute("type","text");
+    inputElement.setAttribute("class","center");
     inputElement.setAttribute("placeholder","Nombre: nombre_producción_izquierda,nombre_producción_derecha; terminal; ...");
 
     formElement.appendChild(labelElement);
@@ -32,6 +35,7 @@ function setUp(){
   }
 
   const buttonElement = document.createElement("input");
+  buttonElement.classList.add("center");
   buttonElement.setAttribute("type","button");
   buttonElement.setAttribute("value","Confirmar");
   buttonElement.setAttribute("id","confirm-btn");
@@ -168,6 +172,7 @@ function showResult(){
   var found = false;
   const container = document.getElementById("result-section");
   const textRes = document.createElement("h2");
+  textRes.classList.add("center","Margin");
 
   //Search in the array which contains the final result  if it has the initial variable
   for (let index = 0; index < cykMatrix[0][(ogChain.length-1)].length && !found; index++) {

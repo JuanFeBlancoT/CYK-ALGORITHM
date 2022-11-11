@@ -1,0 +1,45 @@
+.center {
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+}
+
+#topp{
+  margin-top: 2em;
+}
+
+body{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: azure;
+  background-color: rgb(0, 0, 0);
+}
+
+input[type="text"]{
+  background-color: rgba(101, 98, 98, 0.478);
+  border: none;
+  padding-top: .3em;
+  padding-bottom: .3em;
+  padding-left: 5em;
+  padding-right: 5em;
+  color: rgb(255, 255, 255);
+}
+
+.Margin{
+  margin-top: 1em;
+}
+input[type="text"]:focus{
+  background-color:  rgba(169, 11, 11, 0.478);
+  color: white;
+}
+
+input[type="button"]{
+  color: rgb(0, 0, 0);
+  background-color: rgba(255, 255, 255, 0.859);
+  padding-left: 3em;
+  padding-right: 3em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  border-radius: .5em;
+
+  font-size: medium;
+}
