@@ -6,7 +6,7 @@ var ogChain;
 var cykMatrix;
 
 //Create input fields depending on the amount of productions in grammar
-function hello(){
+function setUp(){
   let numProductions = document.getElementById("productions-num-input");
   productionsInGrammar = numProductions.value;
   ogChain = document.getElementById("chain-input").value;
@@ -22,7 +22,7 @@ function hello(){
     const inputElement = document.createElement("input");
     const brElement = document.createElement("br");
     
-    labelElement.appendChild(document.createTextNode("Gramática " + i));
+    labelElement.appendChild(document.createTextNode("Producción " + i+" "));
     inputElement.setAttribute("id",i);
     inputElement.setAttribute("placeholder","Nombre: nombre_producción_izquierda,nombre_producción_derecha; terminal; ...");
 
@@ -90,10 +90,11 @@ function hi(){
   cykMatrix = new Array(ogChain.length);
   initializeCYK();
   cyk();
+  showResult();
 }
 
 function cyk(){
-  console.log(grammar);
+
   var n = ogChain.length;
   for (let j = 2; j <= n; j++) {
     for (let i = 1; i <= n-j+1; i++) {     
@@ -128,11 +129,11 @@ function cyk(){
         cykMatrix[(i-1)][(j-1)].push(generators[g]);
       }
 
-      //console.log(i);
-      //console.log(leftTarget+""+rightTarget);
+
     }
+    
   }
-  console.log(cykMatrix);
+
 
 }
 
@@ -157,9 +158,30 @@ function initializeCYK(){
       cykMatrix[(i-1)][0].push(generators[index]);
     }
     j++;
+
+
   } 
-  
-  console.log(cykMatrix);
 }
 
+function showResult(){
 
+  var found = false;
+  const container = document.getElementById("result-section");
+  const textRes = document.createElement("h2");
+
+  //Search in the array which contains the final result  if it has the initial variable
+  for (let index = 0; index < cykMatrix[0][(ogChain.length-1)].length && !found; index++) {
+    var element = cykMatrix[0][(ogChain.length-1)][index];
+    var initialVariable = grammar.getProductions()[0].name;
+    
+    if(element == initialVariable){
+      found = true;
+    }
+  }
+  if(found == true){
+    textRes.appendChild(document.createTextNode("La gramática genera la cadena w ingresada"));
+  }else{
+    textRes.appendChild(document.createTextNode("La gramática no genera la cadena w ingresada"));
+  }
+  container.appendChild(textRes);
+}
