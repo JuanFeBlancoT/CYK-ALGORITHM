@@ -103,8 +103,20 @@ function cyk(){
         var leftTarget = cykMatrix[(i-1)][(k-1)];
         var rightTarget = cykMatrix[((i+k)-1)][((j-k)-1)];
 
-        //For each production verify if it has a production with a destination Left = leftTarget and Right = rightTarget
-        var generatorsKcase = grammar.validateProductions(leftTarget, rightTarget);
+        //For each production verify if it has a destination Left = leftTarget and Right = rightTarget
+        var generatorsKcase = [];
+
+        for (let a = 0; a < leftTarget.length; a++) {
+          for (let b = 0; b < rightTarget.length; b++) {
+            var genMix = grammar.validateProductions(leftTarget[a], rightTarget[b]);
+
+            for (let index = 0; index < genMix.length; index++) {
+              generatorsKcase.push(genMix[index]);
+            }
+          }
+        }
+        //
+
         //if not empty, add those variables to the generators array (this will be done for each combination of K's)
         for (let y = 0; y < generatorsKcase.length; y++) {
           generators.push(generatorsKcase[y]);
